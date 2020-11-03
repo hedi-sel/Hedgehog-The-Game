@@ -32,16 +32,21 @@ public class Gameplay : MonoBehaviour {
     }
 
     //////
-    // Methods triggered by external objects :
+    // Methods calles by external objects :
     //////
     public void CrossFinishLine () {
+        if (currentState != State.Play) return;
         currentState = State.Finished;
         FinishMask.Instance.WinMessage();
     }
 
     public void HitObstacle () {
+        if (currentState != State.Play) return;
         currentState = State.Finished;
         FinishMask.Instance.LoseMessage();
     }
 
+    public bool CharacterCanMove () {
+        return currentState == State.Play;
+    }
 }

@@ -26,7 +26,8 @@ public class Hedgehog : MonoBehaviour {
 
     // Managing the state of the Hedgehog
     enum State {
-        Walk, Idle
+        Walk,
+        Idle
     }
     State currentState = State.Idle; //Default state
     State CurrentState { // Managing state toggling
@@ -48,7 +49,7 @@ public class Hedgehog : MonoBehaviour {
 
     void Update () {
         // Handling input and changing state accordingly
-        if (Gameplay.InputTouch) {
+        if (Gameplay.InputTouch && Gameplay.Instance.CharacterCanMove()) {
             myRigidbody.velocity = WalkVector;
             CurrentState = State.Walk;
         } else {
