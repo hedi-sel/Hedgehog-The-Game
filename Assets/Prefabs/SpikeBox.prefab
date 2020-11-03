@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1d0b835cb8845c0b950071c2e43a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HalfPeriod: 1
+  HalfPeriod: 0.8
   StartPosition: {x: -0.5, y: 0, z: 0}
   EndPosition: {x: 0.5, y: 0, z: 0}
   Pattern: 0
@@ -78,8 +78,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4589326, y: 1, z: 0.67357254}
-  m_Center: {x: 0.22946613, y: 0, z: -0.022665024}
+  m_Size: {x: 1.3227708, y: 0.84614444, z: 0.67357254}
+  m_Center: {x: 0.16138521, y: -0.021791816, z: -0.022665024}
 --- !u!1 &765559048265417646
 GameObject:
   m_ObjectHideFlags: 0
