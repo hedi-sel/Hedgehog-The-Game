@@ -8,20 +8,21 @@ public class Hedgehog : MonoBehaviour {
     // Parameters
     public float WalkSpeed = 10;
 
+    Vector3 InitialPosition;
+
     // Components of the gameObject that we will use
-    public static string Name;
     Rigidbody myRigidbody;
     Animator myAnimator;
     void Awake () {
-        myRigidbody = GetComponent<Rigidbody>();
-        myAnimator = GetComponent<Animator>();
-        Name = gameObject.name;
+        myRigidbody = GetComponent<Rigidbody> ();
+        myAnimator = GetComponent<Animator> ();
+        InitialPosition = transform.position;
+        Gameplay.Instance.Restart.AddListener (() => { transform.position = InitialPosition; });
     }
-
 
     Vector3 WalkVector;
     void Start () {
-        WalkVector = new Vector3(0, 0, WalkSpeed);
+        WalkVector = new Vector3 (0, 0, WalkSpeed);
     }
 
     // Managing the state of the Hedgehog
@@ -37,10 +38,10 @@ public class Hedgehog : MonoBehaviour {
             currentState = value;
             switch (currentState) {
                 case State.Walk:
-                    myAnimator.SetBool("isWalk", true);
+                    myAnimator.SetBool ("isWalk", true);
                     break;
                 case State.Idle:
-                    myAnimator.SetBool("isWalk", false);
+                    myAnimator.SetBool ("isWalk", false);
                     myRigidbody.velocity = Vector3.zero;
                     break;
             }
@@ -49,7 +50,7 @@ public class Hedgehog : MonoBehaviour {
 
     void Update () {
         // Handling input and changing state accordingly
-        if (Gameplay.InputTouch && Gameplay.Instance.CharacterCanMove()) {
+        if (Gameplay.InputTouch && Gameplay.Instance.CharacterCanMove ()) {
             myRigidbody.velocity = WalkVector;
             CurrentState = State.Walk;
         } else {
